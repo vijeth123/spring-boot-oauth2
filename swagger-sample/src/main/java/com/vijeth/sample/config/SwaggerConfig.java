@@ -23,7 +23,7 @@ public class SwaggerConfig{
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                //.apis(RequestHandlerSelectors.basePackage("com.vijeth.sample"))
+                .apis(RequestHandlerSelectors.basePackage("com.vijeth.sample"))
                 .paths(PathSelectors.any())
                 .build()
                 .apiInfo(apiInfo());
@@ -35,7 +35,7 @@ public class SwaggerConfig{
                 "My REST API",
                 "Some custom description of API.",
                 "API TOS",
-                "Terms of service",
+                "Terms of  ",
                 new Contact("Vijeth", "www.vijeth.org", "vijethk@star.com"),
                 "License of API", "API license URL", Collections.emptyList());
     }
