@@ -11,9 +11,13 @@ public class SimpleController {
     @Value("${spring.application.name}")
     private String appName;
 
+    @Value("${spring.application.author}")
+    private String author;
+
     @GetMapping("/")
     public String homePage(Model model) {
         model.addAttribute("appName", appName);
+        model.addAttribute("author", author);
         return "home";
     }
 }
