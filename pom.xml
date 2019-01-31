@@ -10,8 +10,10 @@
     <version>1.0</version>
 
     <modules>
-        <module>swagger-sample</module>
+        <module>employee-producer</module>
         <module>spring-boot-mvc</module>
+        <module>common</module>
+        <module>employee-consumer</module>
     </modules>
 
     <properties>
@@ -49,6 +51,11 @@
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-thymeleaf</artifactId>
+                <version>${spring.boot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-test</artifactId>
                 <version>${spring.boot.version}</version>
             </dependency>
             <dependency>

@@ -9,6 +9,10 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
+    <properties>
+        <spring.boot.mvc.version>2.0.0.RELEASE</spring.boot.mvc.version>
+    </properties>
+
     <artifactId>spring-boot-mvc</artifactId>
     <build>
         <plugins>
@@ -27,10 +31,12 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+            <version>${spring.boot.mvc.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
+            <version>${spring.boot.mvc.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -39,6 +45,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
+            <version>${spring.boot.mvc.version}</version>
         </dependency>
         <dependency>
             <groupId>com.h2database</groupId>
@@ -47,6 +54,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
+            <version>${spring.boot.mvc.version}</version>
         </dependency>
         <dependency>
             <groupId>io.springfox</groupId>
@@ -57,10 +65,8 @@
             <artifactId>springfox-swagger-ui</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.junit</groupId>
+            <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version></version>
         </dependency>
     </dependencies>
-
 </project>
