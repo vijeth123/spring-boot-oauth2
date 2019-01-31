@@ -9,8 +9,6 @@ import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.List;
-
 @Controller
 public class ConsumerClientController {
 
