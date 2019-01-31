@@ -1,4 +1,4 @@
-package com.vijeth.sample.controller;
+package com.vijeth.controller;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

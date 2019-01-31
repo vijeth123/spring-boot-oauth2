@@ -1,4 +1,4 @@
-package com.vijeth.sample.controller;
+package com.vijeth.controller;
 
 import com.vijeth.model.Employee;
 import io.swagger.annotations.Api;

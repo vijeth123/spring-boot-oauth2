@@ -1,11 +1,13 @@
-package com.vijeth.sample;
+package com.vijeth;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 @SpringBootApplication(scanBasePackages = "com.vijeth.sample")
-public class  ApplicationMain {
+@EnableDiscoveryClient
+public class ProducerMain {
     public static void main(String[] args) {
-        SpringApplication.run(ApplicationMain.class);
+        SpringApplication.run(ProducerMain.class);
     }
 }
