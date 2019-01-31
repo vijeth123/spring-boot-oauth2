@@ -5,7 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
-import org.springframework.cloud.client.discovery.DiscoveryClient;
+import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.client.RestTemplate;
 
@@ -17,27 +17,28 @@ public class ConsumerClientController {
     private static final Logger LOGGER = LoggerFactory.getLogger(ConsumerClientController.class);
 
     @Autowired
-    private DiscoveryClient discoveryClient;
+    private LoadBalancerClient client;
 
     public Employee getEmployee() {
         final String instanceName = "employee-producer";
-        List<ServiceInstance> serviceInstances = discoveryClient.getInstances(instanceName);
+        ServiceInstance serviceInstance = client.choose(instanceName);
 
-        if(serviceInstances == null || serviceInstances.isEmpty()){
-            LOGGER.error("No instances registered with Eureka-server with the name: "+instanceName);
+        if(serviceInstance == null){
+            LOGGER.error("No instance registered with Eureka-server with the name: "+instanceName);
         }
 
-        LOGGER.info("serviceInstances.size(): [{}]", serviceInstances.size());
-        LOGGER.info("serviceInstances.get(0): [{}]", serviceInstances.get(0));
-        LOGGER.info("serviceInstances.get(0).getHost(): [{}]", serviceInstances.get(0).getHost());
-        LOGGER.info("serviceInstances.get(0).getPort(): [{}]", serviceInstances.get(0).getPort());
-        LOGGER.info("serviceInstances.get(0).getUri(): [{}]", serviceInstances.get(0).getUri());
-        LOGGER.info("serviceInstances.get(0).getServiceId(): [{}]", serviceInstances.get(0).getServiceId());
-        LOGGER.info("serviceInstances.get(0).getMetadata(): [{}]", serviceInstances.get(0).getMetadata());
+        LOGGER.info("serviceInstance: [{}]", serviceInstance);
+        LOGGER.info("serviceInstance.getHost(): [{}]", serviceInstance.getHost());
+        LOGGER.info("serviceInstance.getPort(): [{}]", serviceInstance.getPort());
+        LOGGER.info("serviceInstance.getUri(): [{}]", serviceInstance.getUri());
+        LOGGER.info("serviceInstance.getServiceId(): [{}]", serviceInstance.getServiceId());
+        LOGGER.info("serviceInstance.getMetadata(): [{}]", serviceInstance.getMetadata());
 
-        String uri = serviceInstances.get(0).getUri().toString()+"/employee/create";
+        String uri = serviceInstance.getUri().toString()+"/employee/create";
 
         RestTemplate restTemplate = new RestTemplate();
+
+        LOGGER.info("Calling REST URI: [{}]", uri);
         Employee employee = restTemplate.getForObject(uri, Employee.class);
         return employee;
     }
