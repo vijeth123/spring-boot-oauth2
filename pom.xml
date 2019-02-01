@@ -13,7 +13,9 @@
         <module>employee-producer</module>
         <module>spring-boot-mvc</module>
         <module>common</module>
-        <module>employee-consumer</module>
+        <module>employee-feign-client</module>
+        <module>employee-ribbon-client</module>
+        <module>eureka-server</module>
     </modules>
 
     <properties>

@@ -9,12 +9,12 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
 @EnableScheduling
-public class ConsumerMain {
+public class RibbonClientMain {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(ConsumerMain.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(RibbonClientMain.class);
 
     public static void main(String[] args) {
-        ApplicationContext context = SpringApplication.run(ConsumerMain.class, args);
-        LOGGER.info("Consumer has started!");
+        ApplicationContext context = SpringApplication.run(RibbonClientMain.class, args);
+        LOGGER.info("Ribbon Client has started!");
     }
 }

@@ -15,9 +15,9 @@ public class ScheduledConsumer {
     @Autowired
     private ConsumerClientController consumerClientController;
 
-    @Scheduled(fixedDelayString = "2000")
+    @Scheduled(fixedDelayString = "5000")
     public void schedule(){
-        LOGGER.info("Employee details received: [{}]", consumerClientController.getEmployee());
+            LOGGER.info("Employee details received: [{}]", consumerClientController.getEmployee());
     }
 
 }

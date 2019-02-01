@@ -1,5 +1,6 @@
 package com.vijeth.controller;
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.vijeth.model.Employee;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -22,9 +23,18 @@ public class EmployeeController {
     }
 
     @GetMapping("/create")
+    @HystrixCommand(fallbackMethod = "createEmployeeFallBack")
     @ApiOperation("This end-point is responsible for creating a new employee.")
     public Employee createEmployee(){
         return new Employee(new Random().nextInt(), "Vijeth");
+    }
+
+    /**
+     * This is the Hytrix fall-back method that gets called when there is any failure on calling createEmployee() method.
+     * @return
+     */
+    public Employee createEmployeeFallBack(){
+        return new Employee(new Random().nextInt(), "FallBack");
     }
 
 }
